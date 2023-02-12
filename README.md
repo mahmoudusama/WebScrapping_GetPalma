@@ -4,6 +4,9 @@ Program to get data from stockmarket by webscraping. Python-BeautifulSoup
 
 The Python code has been depreciated!
 
-Libraries Used: BeautifulSoup, Requests and Openpyxl
+Libraries Used: 
+1) BeautifulSoup
+2) Requests
+3) Openpyxl
 
 The data is taken from getpalma website https://getpalma.com/collections/all-bags
