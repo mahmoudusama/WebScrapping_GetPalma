@@ -8,5 +8,6 @@ Libraries Used:
 1) BeautifulSoup
 2) Requests
 3) Openpyxl
+4) Validators
 
 The data is taken from getpalma website https://getpalma.com/collections/all-bags
