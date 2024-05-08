@@ -70,14 +70,19 @@ def download_images(product_link, product_name):
         counter+=1
 
 # To parse Decription for each product by taking the product link as an input
+# Define the productDescription function
 def productDescription(link):
     response = requests.get(link)
     soup = BeautifulSoup(response.text, "html.parser")
-    description = soup.find("div", class_= "cc-tabs__tab").text
+    div_element = soup.find("div", id="smart-tabs-content-0")
+    if div_element:
+        description = div_element.text.strip()
+    else:
+        description = "Description not found"
     return description
 
 # Number of pages in website
-pages = 5
+pages = 7
 
 # Set the starting row for the data
 row = 2
@@ -96,6 +101,8 @@ for page in range(pages):
         # Find the product Link
         product_link = product.find("div", class_= "cc-quick-buy-btn-container")
         link=('https://getpalma.com/'+product_link.find("a").attrs['href'])
+
+        print(link)
 
         # Find the product description
         description = productDescription(link)

@@ -1,9 +1,12 @@
+import requests
+from bs4 import BeautifulSoup
+
 
 # Extract the title for each product
 def websitecontent(page_num):
     result = requests.get(f"https://getpalma.com/collections/all-bags?page={page_num}")
 
-    # Creat soup object to parse content
+    # Create soup object to parse content
     soup = BeautifulSoup(result.text, "html.parser")
     return soup
 
@@ -56,13 +59,13 @@ def product_description(page_links):
     descrip =[]
     #page_links = product_links(soup)
     result = requests.get()
-    # Creat soup object to parse content
+    # Create soup object to parse content
     soup = BeautifulSoup(result.text, "html.parser")
     # To get the data from inside each product
     for link in page_links:
         result = requests.get(link)
         soup = BeautifulSoup(result.text, "html.parser")
-        description = soup.find("div", class_= "cc-tabs__tab")
+        description = soup.find("div", class_="cc-tabs__tab")
         descrip.append(description.text)
         print(descrip)
     return descrip

@@ -9,7 +9,7 @@ A simple script to check the availability for each product.
 """
 
 # Read the Excel file
-df = pd.read_excel("proNew.xlsx", sheet_name="Sheet1")
+df = pd.read_excel("products.xlsx", sheet_name="Sheet")
 
 # Specify the column containing the product links
 column_with_links = "Product link"
@@ -34,7 +34,6 @@ for index, row in df.iterrows():
         print(f"Error processing link: {link}")
         print(e)
 
-
 # Save the updated Excel file
-df.to_excel("proNew.xlsx", index=False)
+df.to_excel("products.xlsx", index=False)
 
