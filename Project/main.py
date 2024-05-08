@@ -67,9 +67,9 @@ def download_images(product_link, product_name):
         # Save the image to the product folder
         open(f"{product_name}/{counter}{ext}", "wb").write(response.content)
         print(f"{counter}{ext} saved")
-        counter+=1
+        counter += 1
 
-# To parse Decription for each product by taking the product link as an input
+# To parse Description for each product by taking the product link as an input
 # Define the productDescription function
 def productDescription(link):
     response = requests.get(link)
@@ -81,8 +81,8 @@ def productDescription(link):
         description = "Description not found"
     return description
 
-# Number of pages in website
-pages = 7
+# Number of pages in website it will start from zero, so I need to add+1
+pages = 8
 
 # Set the starting row for the data
 row = 2
@@ -99,7 +99,7 @@ for page in range(pages):
         price = product.find("span", class_="money").text
 
         # Find the product Link
-        product_link = product.find("div", class_= "cc-quick-buy-btn-container")
+        product_link = product.find("div", class_="cc-quick-buy-btn-container")
         link=('https://getpalma.com/'+product_link.find("a").attrs['href'])
 
         print(link)
@@ -107,7 +107,7 @@ for page in range(pages):
         # Find the product description
         description = productDescription(link)
 
-        # Download prodcut images
+        # Download product images
         download = download_images(link, product_name)
 
 
